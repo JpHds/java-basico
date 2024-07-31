@@ -7,7 +7,7 @@ public class ContaTerminal {
         System.out.print("Por favor, insira o número da agência: ");
         String numAgencia = sc.nextLine();
 
-        System.out.print("Por favor, insira o número da conta: ");
+            System.out.print("Por favor, insira o número da conta: ");
         int numConta = sc.nextInt();
         sc.nextLine();
 
