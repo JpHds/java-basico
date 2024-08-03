@@ -4,5 +4,6 @@ public interface IConta {
     void depositar(double valor);
     void transferir(double valor, IConta conta);
     void imprimirExtrato();
-    void adicionarCliente(Cliente cliente);
+    void imprimirCabecalhoExtrato();
+    String retornarNome();
 }

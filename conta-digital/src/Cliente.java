@@ -7,4 +7,12 @@ public class Cliente {
         this.nome = nome;
         this.sobrenome = sobrenome;
     }
+
+    public String getNome() {
+        return this.nome;
+    }
+
+    public String getSobrenome() {
+        return this.sobrenome;
+    }
 }

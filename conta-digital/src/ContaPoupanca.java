@@ -4,7 +4,7 @@ public class ContaPoupanca extends Conta {
         super(cliente);
     }
 
-    public void imprimirExtratoCP() {
+    public void imprimirCabecalhoExtrato() {
         System.out.println("========== Extrato Conta Poupança ==========");
         imprimirExtrato();
     };
