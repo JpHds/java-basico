@@ -1,11 +1,11 @@
 package dev;
 
 import bootcamp.Bootcamp;
-import curso.Curso;
+import course.Course;
 
 public interface IDev {
 
-    void inscreverBootcamp(Bootcamp bootcamp);
-    void inscreverCurso(Curso curso);
-
+    void enrollInBootcamp(Bootcamp bootcamp);
+    void enrollInCourse(Course curso);
+    
 }

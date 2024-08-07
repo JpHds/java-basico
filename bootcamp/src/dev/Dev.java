@@ -1,77 +1,64 @@
 package dev;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 
 import bootcamp.Bootcamp;
-import curso.Curso;
+import course.Course;
 
 public class Dev implements IDev {
-
-    private int id = 0;
-    private String nome;
-    private String dataNascimento;
+    private static int nextId = 1;
+    private int id;
+    private String name;
+    private String birthDate;
     private String email;
-    private List<Bootcamp> bootcampsInscrito;
-    private List<Curso> cursosInscrito;
+    private List<Bootcamp> enrolledBootcamps;
+    private List<Course> enrolledCourses;
 
-    private static final String EMAIL_REGEX = "^[\\w-\\.]+@[\\w-]+\\.[a-zA-Z]{2,}$";
-    private static final String NASCIMENTO_REGEX = "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/(19|20)\\d\\d$";
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-    public Dev(String nome, LocalDate dataNascimento, String email) {
-        this.id = id;
-        this.nome = nome;
+    public Dev(String name, LocalDate birthDate, String email) {
+        this.id = nextId++;
+        this.name = name;
         this.email = email;
-        this.dataNascimento = dataNascimento.format(formatter);
-        this.bootcampsInscrito = new ArrayList<Bootcamp>();
-        this.cursosInscrito = new ArrayList<Curso>();
-        id++;
+        this.birthDate = birthDate.format(formatter);
+        this.enrolledBootcamps = new ArrayList<>();
+        this.enrolledCourses = new ArrayList<>();
     }
 
-    public int getId(){
+    public int getId() {
         return this.id;
     }
 
-    public String getNome() {
-        return this.nome;
+    public String getName() {
+        return this.name;
     }
+
     public String getEmail() {
         return this.email;
     }
 
-    public String getDataNascimento() {
-        return this.dataNascimento;
+    public String getBirthDate() {
+        return this.birthDate;
     }
 
-    public List<Bootcamp> getBootcampsInscrito(){
-        return this.bootcampsInscrito;
+    public List<Bootcamp> getEnrolledBootcamps() {
+        return this.enrolledBootcamps;
     }
 
-    public List<Curso> getCursosInscrito(){
-        return this.cursosInscrito;
-    }
-
-    @Override
-    public void inscreverBootcamp(Bootcamp bootcamp) {
-        bootcampsInscrito.add(bootcamp);
+    public List<Course> getEnrolledCourses() {
+        return this.enrolledCourses;
     }
 
     @Override
-    public void inscreverCurso(Curso curso) {
-        cursosInscrito.add(curso);
+    public void enrollInBootcamp(Bootcamp bootcamp) { 
+        enrolledBootcamps.add(bootcamp);
     }
 
-    public static boolean isValidEmail(String email) {
-        // Verifica se o e-mail corresponde ao padrão
-        return Pattern.matches(EMAIL_REGEX, email);
+    @Override
+    public void enrollInCourse(Course course) {
+        enrolledCourses.add(course);
     }
-
-    public static boolean isValidDataNascimento(String dataNascimento) {
-        return Pattern.matches(NASCIMENTO_REGEX, dataNascimento);
-    }
-
 }
